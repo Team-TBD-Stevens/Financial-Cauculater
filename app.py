@@ -33,6 +33,14 @@ def user_rec():
     ticker, S, K, r, T = read_in()
     adj_close = yf.download(ticker, start="2019-12-01", end="2020-12-01")['Adj Close']
 
+    fig = plt.figure(figsize=(10, 6))
+    plt.title('Adjusted close of ' + ticker)
+    plt.plot(adj_close, color='darkseagreen')
+    sio = BytesIO()
+    fig.savefig(sio, format='png')
+    data = base64.encodebytes(sio.getvalue()).decode()
+    src = 'data:image/png;base64,' + str(data)
+
     result_df = pd.DataFrame(columns=['model', 'option type', 'Expected PRICE'])
     title, prices, model, o_type, BS_bool, BS_df, BS_html = [], [], [], [], False, None, None
     call = CommonOption(call_or_put=1, maturity=T/365, spot_price=S, sigma=float(np.std(adj_close)),
@@ -65,7 +73,7 @@ def user_rec():
     result_df.index = title
     result_df['Expected PRICE'] = prices
 
-    return render_template('result.html', result=result_df, BS_bool=BS_bool, BS_df=BS_df)
+    return render_template('result.html', result=result_df, BS_bool=BS_bool, BS_df=BS_df, pic=src)
 
 
 def read_in():
