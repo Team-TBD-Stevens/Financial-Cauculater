@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .list {
+        width: 200px;
+        margin: 10px auto;
+    }
+
+    .list li:before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #000;
+        display: inline-block;
+        margin-right: 5px;
+        vertical-align: middle;
+        margin-top: -5px;
+    }
+</style>
+<body>
+
+<header>
+    <div class="container">
+        <div id="brandname">
+            HERE IS THE RESULT
+        </div>
+        <h1 style="color:darkolivegreen;text-align: center;">Option price estimated by models</h1>
+    </div>
+</header>
+
+
+{#<div align="center">#}
+{#    {% for Result in result_html %}#}
+{#        {{ result_html|safe }}#}
+{#    {% endfor %}#}
+{#</div>#}
+
+<div align="center">
+    <table>
+        <thead>
+        <tr style="text-align: center">
+            <th></th>
+            <th>model</th>
+            <th>option type</th>
+            <th>Expected PRICE</th>
+        </tr>
+        </thead>
+        <tbody align="center">
+        {% for key, value in result.T.items() %}
+
+            <tr>
+                <th> {{ key }} </th>
+                {% for x in value %}
+                    <td style="width: 149px"> {{ x }} </td>
+                {% endfor %}
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% if BS_bool == True %}
+
+    <br>
+    <br>
+
+    {#        <indent>#}
+    {#            <% import pandas#}
+    {#               print(BS_df.iloc[n, :]) %>#}
+    {#        </indent>#}
+
+    <header>
+        <div class="container">
+            <h1 style="color:darkolivegreen;text-align: center;">Parameters with Black-Scholes Model</h1>
+        </div>
+    </header>
+
+    <div align="center">
+        <table>
+            <thead>
+            <tr style="text-align: center;">
+                <th></th>
+                <th>delta</th>
+                <th>gamma</th>
+                <th>vega</th>
+                <th>theta</th>
+                <th>rho</th>
+            </tr>
+            </thead>
+            <tbody align="center">
+            {% for key, value in BS_df.T.items() %}
+
+                <tr>
+                    <th> {{ key }} </th>
+                    {% for x in value %}
+                        <td style="width: 60px"> {{ x }} </td>
+                    {% endfor %}
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+
+<br>
+<br>
+
+<div align="center">
+    <button id="load" onclick="window.history.go(-1)">back</button>
+</div>
+
+{#<!doctype html>#}
+{#<html>#}
+{#   <body>#}
+{##}
+{#      <table border = 1>#}
+{#         {% for key, value in result.items() %}#}
+{##}
+{#            <tr>#}
+{#               <th> {{ key }} </th>#}
+{#               <td> {{ value }} </td>#}
+{#            </tr>#}
+{##}
+{#         {% endfor %}#}
+{#      </table>#}
+{##}
+{#   </body>#}
+{#</html>#}
+
+
+</body>
+</html>

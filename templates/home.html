@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div id="brandname">
+            Financial Calculator using flask API
+        </div>
+        <h2 style="color:orange;text-align: center;">Financial Calculator using flask API</h2>
+    </div>
+</header>
+
+<div align="center" ;class="ml-container">
+    <div>
+        Minghao Kang, Fangchi Wu, Shiraz Bheda, Yuwen Jin
+    </div>
+</div>
+
+
+<p style="color:orange;text-align: center;"><b> Enter information of the option you want to explore </b></p>
+<div align="center" ;class="row">
+    <form action="{{ url_for('user_rec') }}" method="POST">
+
+        {#            <p style="color:orange;text-align: center;"><b>Enter Your Feature Here</b></p>#}
+        <!-- <input type="text" name="comment"/> -->
+        {#            <p style="color:blue;text-align: center;"><b>Enter the ticker of the stock</b></p>#}
+        {#            <textarea name="ticker" rows="2" cols="10" ></textarea>#}
+        {##}
+        {#            <p style="color:blue;text-align: center;"><b>Enter Your Stock price here</b></p>#}
+        {#            <textarea name="S" rows="2" cols="10" ></textarea>#}
+        {##}
+        {#            <p style="color:blue;text-align: center;"><b>Enter Your Strike price</b></p>#}
+        {#            <textarea name="K" rows="2" cols="10" ></textarea>#}
+        {##}
+        {#            <p style="color:blue;text-align: center;"><b>Enter Your Risk free rate</b></p>#}
+        {#            <textarea name="r" rows="2" cols="10" ></textarea>#}
+        {##}
+        {#            <p style="color:blue;text-align: center;"><b>Enter Your Time to maturity</b></p>#}
+        {#            <textarea name="T" rows="2" cols="10" ></textarea>#}
+        {#            <br/>#}
+
+        <!-- ———————————————————————————————————————————— -->
+
+
+        <p>ticker <input type="text" name="ticker" required/></p>
+        <p>Stock price <input type="text" name="S" required/></p>
+        <p>Strike price <input type="text" name="K" required/></p>
+        <p>Risk free return <input type="text" name="r"/></p>
+        <p>Time to maturity <input type="text" name="T" required/></p>
+
+
+        <!-- ———————————————————————————————————————————— -->
+
+        <p style="color:orange;text-align: center;"><b>Select financial models you want to use to price the option</b>
+        </p>
+        <div class="col-sm-2 ">
+            <label>
+                <input name="pricing_model" value="BS model" type="checkbox"> BS model
+            </label>
+        </div>
+
+        <div class="col-sm-2 ">
+            <label>
+                <input name="pricing_model" value="Binomial Tree" type="checkbox"> Binomial Tree
+            </label>
+        </div>
+
+        <div class="col-sm-2 ">
+            <label>
+                <input name="pricing_model" value="Trinomial Tree" type="checkbox"> Trinomial Tree
+            </label>
+        </div>
+
+        <br/>
+
+        <!-- ———————————————————————————————————————————— -->
+
+
+        <p style="color:orange;text-align: center;"><b>Select the type of option you are interested in</b></p>
+        <div class="col-sm-2 ">
+            <label>
+                <input name="option_type" value="European Option" type="checkbox"> European Option
+            </label>
+        </div>
+
+        <div class="col-sm-2 ">
+            <label>
+                <input name="option_type" value="American Option" type="checkbox"> American Option
+            </label>
+        </div>
+
+        <br/>
+
+        <input type="submit" class="btn-lg" value="submit">
+
+    </form>
+</div>
+
+
+</body>
+</html>
