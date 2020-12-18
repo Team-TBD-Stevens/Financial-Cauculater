@@ -40,12 +40,6 @@
 </header>
 
 
-{#<div align="center">#}
-{#    {% for Result in result_html %}#}
-{#        {{ result_html|safe }}#}
-{#    {% endfor %}#}
-{#</div>#}
-
 <div align="center">
     <table>
         <thead>
@@ -69,26 +63,27 @@
         {% endfor %}
         </tbody>
     </table>
+
+
 </div>
 
 <br>
+<br>
+<br>
+
+<h1 style="color:darkolivegreen;text-align: center;"> Price charts</h1>
 
 <div align="center">
-    <p>
-        <img src="{{ pic }}">
-    </p>
+        <img src="{{ adj_plt }}" width="850 px">
+        <img src="{{ candle_plt }}" width="800 px">
 </div>
+
 
 
 {% if BS_bool == True %}
 
     <br>
     <br>
-
-    {#        <indent>#}
-    {#            <% import pandas#}
-    {#               print(BS_df.iloc[n, :]) %>#}
-    {#        </indent>#}
 
     <header>
         <div class="container">
@@ -133,24 +128,6 @@
 
 <br>
 <br>
-
-{#<!doctype html>#}
-{#<html>#}
-{#   <body>#}
-{##}
-{#      <table border = 1>#}
-{#         {% for key, value in result.items() %}#}
-{##}
-{#            <tr>#}
-{#               <th> {{ key }} </th>#}
-{#               <td> {{ value }} </td>#}
-{#            </tr>#}
-{##}
-{#         {% endfor %}#}
-{#      </table>#}
-{##}
-{#   </body>#}
-{#</html>#}
 
 
 </body>

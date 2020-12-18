@@ -21,7 +21,6 @@
 </div>
 
 
-
 <p style="color:orange;text-align: center;"><b> Enter information of the option you want to explore </b></p>
 <div align="center" ;class="row">
     <form action="{{ url_for('user_rec') }}" method="POST">
@@ -95,6 +94,20 @@
         </div>
 
         <br/>
+
+        <p style="color:orange;text-align: center;"><b>What period of candle stick you prefer?</b></p>
+        <div class="col-sm-2 ">
+            <label>
+                <input name="candle_stick" value="Day" type="radio"> Daily Chart
+            </label>
+        </div>
+
+        <div class="col-sm-2 ">
+            <label>
+                <input name="candle_stick" value="Week" type="radio"> Weekly Chart
+            </label>
+        </div>
+
 
         <input type="submit" class="btn-lg" value="submit">
 
