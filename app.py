@@ -39,8 +39,11 @@ def user_rec():
     pricing_model = request.form.getlist('pricing_model')
     option_type = request.form.getlist('option_type')
     ticker, S, K, r, T = read_in()
-    adj_close = yf.download(ticker, start=formatted_one_year, end=formatted_today)['Adj Close']
-
+    try:
+        adj_close = yf.download(ticker, start=formatted_one_year, end=formatted_today)['Adj Close']
+    except ValueError("There's not enough data."):
+        adj_close = yf.download(ticker)['Adj Close']
+    adj_close.to_csv('data/AAPL.csv')
     fig = plt.figure(figsize=(12, 8), dpi=100, facecolor="white")
     plt.title('Adjusted close of ' + ticker)
     plt.plot(adj_close, color='darkseagreen')
@@ -144,11 +147,13 @@ def fit_model(model, option_type, option: CommonOption):
 
 
 def candle_stick(stock, period='day'):
-    formatted_today = today.strftime('%Y-%m-%d')
     if period == "week":
         start = today + datetime.timedelta(days=-500)
         formatted_start = start.strftime('%Y-%m-%d')
-        prices_row = yf.download(stock, start=formatted_start, end=formatted_today)
+        try:
+            prices_row = yf.download(stock, start=formatted_start, end=formatted_today)
+        except ValueError("There's not enough data."):
+            prices_row = yf.download(stock)
         days = prices_row.index
 
         weekdays = []
@@ -182,7 +187,10 @@ def candle_stick(stock, period='day'):
     else:
         half_year = today + datetime.timedelta(days=-180)
         formatted_half_year = half_year.strftime('%Y-%m-%d')
-        prices = yf.download(stock, start=formatted_half_year, end=formatted_today)
+        try:
+            prices = yf.download(stock, start=formatted_half_year, end=formatted_today)
+        except ValueError("There's not enough data."):
+            prices = yf.download(stock)
         title = 'Daily Candle Stick of ' + stock
 
     # Initial settings of the figure and subplot
@@ -209,7 +217,6 @@ def candle_stick(stock, period='day'):
     # x-labels setting
     graph_KAV.set_xticks(range(0, len(prices.index), 15))
     graph_KAV.set_xticklabels([prices.index.strftime('%Y-%m-%d')[index] for index in graph_KAV.get_xticks()])
-    plt.show()
 
     return fig
 
