@@ -3,17 +3,18 @@
 
 \
 \
-**Summary**
+**Purpose**
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-A collaborative project between group members Yuwen Jin, Minghao Kang, Fangchi Wu, and Shiraz Bheda. The goal is to create a web interface from which the user may select up to 8 unique NLP analytical tools to be applied on a text string that is entered into a blank text box by the user:
-
-[![Screenshot-2020-11-09-210040.png](https://i.postimg.cc/Ss0w8FNk/Screenshot-2020-11-09-210040.png)](https://postimg.cc/VSRGQhCV)
-
+A collaborative project between group members Yuwen Jin, Minghao Kang, Fangchi Wu, and Shiraz Bheda. Our purpose was to create a website with multiple features for options pricing, including user input, data visualization, and a comparison of runtime metrics that varies with source of historical data. The idea of this tool is that it will serve as a baseline for a potentially marketable product for end users who want to price out options quickly using their own assumptions in a clean and presentable web interface.
 \
 \
-**Description of NLP tools**
+**Inspiration**
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-1. Sentiment Analysis: indicates whether sentiment in the text string is positive or negative
+We wanted to apply some of the skills we have learned in this class towards created fast and user-friendly financial tools. One of the main benefits of this project is that it has a lot of built-in user flexibility that allows for detailed results with a faster turnaround time than any simple solver-driven excel sheet can provide. Importantly, this project represents a baseline that is very scalable if the data is stored in a database, as opposed to downloading the necessary historical data from a package with every user request. Observing the differences in runtime helped in forming this conclusion and developing a product that is much more scalable.
+
+**List of Functions**
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1. We were partly inspired by the challenge of applying the skills we have learned in this class in a financial setting.
 2. Language Detect: returns the name of the most possible language that the string is written in
 3. Tokenize: tokenizes the string
 4. Top Ten: returns a list of up to ten of the most frequently used words
